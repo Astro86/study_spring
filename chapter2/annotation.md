@@ -9,6 +9,11 @@ public interface ProductService {
 }
 ```
 
+ProdectService 인터페이스에는 두개의 메소드가 정의 되어 있다.
+
+1. Product를 추가하기 위한 addProduct메소드
+2. 이름으로 Product를 찾기 위한 findByProductName메소드
+
 > src/main/java/sample/di/business/service/ProdectServiceImpl.java
 
 ```java
