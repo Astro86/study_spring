@@ -1,14 +1,16 @@
 # annotation을 이용한 DI
 
 > src/main/java/sample/di/business/service/ProdectService.java
+
 ```java
 public interface ProductService {
-		void addProduct(Product product);
-	    Product findByProductName(String name);
+    void addProduct(Product product);
+    Product findByProductName(String name);
 }
 ```
 
 > src/main/java/sample/di/business/service/ProdectServiceImpl.java
+
 ```java
 @Component
 public class ProductServiceImpl implements ProductService {
@@ -27,6 +29,7 @@ public class ProductServiceImpl implements ProductService {
 ```
 
 > src/main/java/sample/di/business/service/ProdectDao.java
+
 ```java
 public interface ProductDao {
 	void addProduct(Product product);
@@ -35,6 +38,7 @@ public interface ProductDao {
 ```
 
 > src/main/java/sample/di/dataaccess/ProductDaoImpl.java
+
 ```java
 @Component
 public class ProductDaoImpl implements ProductDao {
@@ -53,6 +57,7 @@ public class ProductDaoImpl implements ProductDao {
 ```
 
 > src/main/java/sample/ProductSampleRun.java
+
 ```java
 public class ProductSampleRun {
 
@@ -78,6 +83,7 @@ public class ProductSampleRun {
 ```
 
 src/main/java/sample/config/applicationContext.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
