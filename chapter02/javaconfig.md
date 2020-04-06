@@ -1,4 +1,4 @@
-# JAVA config을 이용한 DI
+# javaconfig을 이용한 DI
 
 ```shell
 .
