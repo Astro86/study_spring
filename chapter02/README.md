@@ -141,7 +141,8 @@ public class ProductDaoImpl implements ProductDao {
 ```
 
 ### 어노테이션을 사용한 Bean정의 파일
-src/main/java/sample/config/applicationContext.xml
+
+> src/main/java/sample/config/applicationContext.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -183,11 +184,14 @@ src/main/java/sample/config/applicationContext.xml
 
 
 
+#### context:exclude-filter
 
-<image src = "images/context_exclude-filter.png" width = "400" align = "center">
+<image src = "images/context_exclude-filter.png" width = "500" align = "center">
 
+#### context:use-defualt-filter
 
-<image src = "images/use-default-filters.png" width = "400" align = "center">
+<image src = "images/use-default-filters.png" width = "500" align = "center">
 
+#### context:include-filter
 
-<image src = "images/context_include_filter.png" width = "400" align = "center">
+<image src = "images/context_include_filter.png" width = "500" align = "center">
