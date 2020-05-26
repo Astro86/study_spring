@@ -34,7 +34,7 @@ ProductService{
 
 ## DI 컨테이너를 이용하는 경우
 
-<image src = "images/Product_di.png" width = "400" align = "center">
+<image src = "images/product_di.png" width = "400" align = "center">
 
 DI 컨테이너를 이용하게 되면 ProductSampleRun이 이용하는 ProductService의 인스턴스와 ProdectService가 새용하는 ProductDao의 인스턴스를 DI가 생성해준다. 그리고 ProdecDao의 인스턴스를 이용하는 ProductService에 의존관계를 주입해준다. 때문에 코드 상에서 해당 객체들을 생성해주는 코드를 작성할 필요가 없다.
 
@@ -60,7 +60,7 @@ ProductService{
 
 ## 인터페이스 기반의 컴포넌트화를 실현
 
-<image src = "images/Product_dao_service.png" width = "400" align = "center">
+<image src = "images/product_dao_service.png" width = "400" align = "center">
 
 DI를 이용할 때는 원칙적으로 클래스는 인터페이스에 의존하고 실현 클래스에서는 의존하지 않을 필요가 있다. 때문에 ProductService와 ProductDao를 인터페이스로 하고, 구현 클래스는 인터페이스 이름에 Impl을 덧 붙인 것으로 표현한다.
 
@@ -178,7 +178,7 @@ src/main/java/sample/config/applicationContext.xml
 
 | 태그                                             | 설명                                                                                                                                                       |
 | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <context:annotation-config/>                     | @Autowired, @Resource를 이요할 때의 선언                                                                                                                   |
+| \<context:annotation-config/>                    | @Autowired, @Resource를 이요할 때의 선언                                                                                                                   |
 | <context:component-scan base-pakage="패키지명"/> | @Component, @Service 등의 어노테이션이 설정된 클래스를 읽어 들여,  DI 컨테이너에 등록되고   base-package속성으로 지정한 패키지 아래의 컴포넌트를 검색한다. |
 
 
