@@ -1,6 +1,6 @@
 # 스프링 부트 웹 만들기
 
-1. [domain 생성하기](template/README.md)
+1. [domain 생성하기](domain/README.md)
 2. [repository 만들기](repository/README.md)
 3. [service 만들기](service/README.md)
 4. [controller 만들기](controller/README.md)
