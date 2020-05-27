@@ -1,10 +1,13 @@
 # domain 생성하기
 
 ## 커뮤니티 게시판 엔티티 관계도
-![](images/entity_relation.png)
+
+<image src ="images/entity_relation.png"  width = "500">
 
 ## 커뮤니티 게시판 데이터베이스 테이블
-![](images/database_relation.png)
+
+<image src ="images/database_relation.png"  width = "500">
+
 
 > Board Entity 생성하기
 
