@@ -1,5 +1,11 @@
 # domain 생성하기
 
+## 커뮤니티 게시판 엔티티 관계도
+![](images/entity_relation.png)
+
+## 커뮤니티 게시판 데이터베이스 테이블
+![](images/database_relation.png)
+
 > Board Entity 생성하기
 
 ```java
