@@ -20,19 +20,26 @@ public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
+
     @Column
     private String title;
+    
     @Column
     private String subTitle;
+    
     @Column
     private String content;
+    
     @Column
     @Enumerated(EnumType.STRING)
     private BoardType boardType;
+    
     @Column
     private LocalDateTime createdDate;
+    
     @Column
     private LocalDateTime updatedDate;
+    
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
 
@@ -79,16 +86,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
+    
     @Column
     private String name;
+    
     @Column
     private String password;
+    
     @Column
     private String email;
+    
     @Column
     private String pincipal;
+    
     @Column
     private LocalDateTime createdDate;
+    
     @Column
     private LocalDateTime updatedDate;
 
