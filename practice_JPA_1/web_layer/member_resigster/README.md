@@ -16,6 +16,10 @@ public class MemberForm {
 }
 ```
 
+Member Entity를 직접사용하는 것이 아닌 MemberForm객체를 생성해 form을 처리 하는 이유는 view에 종속적인 코드(기능)가 계속 추가 되기 때문에 entity가 더러워져 유지보수가 힘들어지기 때문에 view와 entity와의 관계를 분리시켜 놓고 entity를 순수하게 유지하기 위해서 MemberForm이라는 새로운 객체를 생성해 처리한다.
+
+> entity는 핵심 비즈니스 로직만을 가지고 있고 화면을 위한 기능은 없어야 한다.(Form객체나 DTO를 사용해 해결)
+
 > 회원등록 controller 
 
 ```java
@@ -55,6 +59,7 @@ public class MemberController {
     }
 }
 ```
+API를 만들 때에는 절대로 entity를 외부로 반환해서는 안된다. API는 스펙이 변해버릴 수 있기 때문이다.
 
 > 회원 등록 form 화면
 
