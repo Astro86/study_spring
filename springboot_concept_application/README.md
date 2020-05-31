@@ -2,7 +2,7 @@
 
 - 1부 소개
 - 2부 스프링 부트 시작하기
-- [3부 스프링 부트 원리](chpater03/README.md)
+- [3부 스프링 부트 원리](chapter03/README.md)
 - [4부 스프링 부트 활용](chapter04/README.md)
 - 5부 스프링 부트 운영
 - 6부 마무리
