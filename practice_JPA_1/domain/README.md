@@ -8,7 +8,7 @@
 @Setter
 public class Member {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
 
@@ -39,19 +39,19 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private Member member;
+    private Member member; //주문 회원
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
-    private Delivery delivery;
+    private Delivery delivery; //배송정보
 
-    private LocalDateTime orderDate; // 주문시간
+    private LocalDateTime orderDate; //주문시간
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus status; // 주문 상태 [ORDER, CANCEL]
+    private OrderStatus status; //주문상태 [ORDER, CANCEL]
 
     //==연관관계 메서드==//
     public void setMember(Member member) {
@@ -68,6 +68,7 @@ public class Order {
         this.delivery = delivery;
         delivery.setOrder(this);
     }
+
 
     //==생산 메서드==//
     public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
@@ -128,20 +129,22 @@ public enum OrderStatus {
 public class OrderItem {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
-    private Item item;
+    @JoinColumn(name = "item_id")
+    private Item item;      //주문 상품
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    private Order order;
+    private Order order;    //주문
 
-    private int orderPrice;
-    private int count;
+    private int orderPrice; //주문 가격
+
+    private int count;      //주문 수량
+
 
     //==생성 메서드==//
     public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
@@ -190,22 +193,25 @@ public abstract class Item {
     private Long id;
 
     private String name;
+
     private int price;
+
     private int stockQuantity;
 
     @ManyToMany(mappedBy = "items")
-    private List<Category> categories = new ArrayList<>();
+    private List<Category> categories = new ArrayList<Category>();
+
 
     //==비즈니스 로직==//
     // stock 증가
-    public void addStock(int quantity){
+    public void addStock(int quantity) {
         this.stockQuantity += quantity;
     }
 
     // stcok 감소
-    public void removeStock(int quantity){
+    public void removeStock(int quantity) {
         int restStock = this.stockQuantity - quantity;
-        if(restStock < 0){
+        if (restStock < 0) {
             throw new NotEnoughStockException("need more stock");
         }
         this.stockQuantity = restStock;
@@ -298,12 +304,10 @@ public class Category {
     private Long id;
 
     private String name;
-
     @ManyToMany
     @JoinTable(name = "category_item",
             joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "item_id")
-    )
+            inverseJoinColumns = @JoinColumn(name = "item_id"))
     private List<Item> items = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -313,10 +317,12 @@ public class Category {
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
 
-    public void addCategory(Category child){
+    //==연관관계 메서드==//
+    public void addChildCategory(Category child) {
         this.child.add(child);
         child.setParent(this);
     }
+
 }
 ```
 
