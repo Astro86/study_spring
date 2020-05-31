@@ -1,0 +1,42 @@
+# 4부 스프링 부트 활용
+
+- [스프링 부트 활용 소개]
+- [Spring Application 1부](ch4_1/README.md)
+- [Spring Application 2부](ch4_2/README.md)
+- [외부 설정 1부](ch4_3/README.md)
+- [외부 설정 2 - 1부](ch4_4/README.md)
+- [외부 설정 2 - 2부]
+- [프로파일]
+- [로깅 1부 : 스프링 부트 기본 로거 설정](logging_1/READMD.md)
+- [로깅 2부 : 커스터 마이징]
+- [테스트]
+- [테스트 유틸]
+- [Spring-Boot-Devtools]
+- [스프링 웹 MVC 1부 : 소개](spring_web_mvc_1/README.md)
+- [스프링 웹 MVC 2부 : HttpMessageConverters](spring_web_mvc_2/README.md)
+- [스프링 웹 MVC 3부 : ViewResolve](spring_web_mvc_3/README.md)
+- [스프링 웹 MVC 4부 : 정적 리소스 지원]
+- [스프링 웹 MVC 5부 : 웹 JAR]
+- [스프링 웹 MVC 6부 : index 페이지와 파비콘]
+- [스프링 웹 MVC 7부 : Thymeleaf]
+- [스프링 웹 MVC 8부 : HtmlUnit]
+- [스프링 웹 MVC 9부 : ExceptionHandler]
+- [스프링 웹 MVC 10부 : Spring H]
+- [스프링 웹 MVC 11부: CORS]
+- [스프링 데이터 1부: 소개]
+- [스프링 데이터 2부: 인메모리 데이터베이스]
+- [스프링 데이터 3부: MySQL]
+- [스프링 데이터 4부: PostgreSQL]
+- [스프링 데이터 5부: 스프링 데이터 JPA 소개]
+- [스프링 데이터 6부: 스프링 데이터 JPA 연동]
+- [스프링 데이터 7부: 데이터베이스 초기화]
+- [스프링 데이터 8부: 데이터베이스 마이그레이션]
+- [스프링 데이터 9부: Redis]
+- [스프링 데이터 10부: MongoDB]
+- [스프링 데이터 11부: Neo4j]
+- [스프링 데이터 12부: 정리]
+- [스프링 시큐리티 1부: Starter-Security]
+- [스프링 시큐리티 2부: 시큐리티 설정 커스터마이징]
+- [스프링 REST 클라이언트 1부: RestTemplate과 WebClient]
+- [스프링 REST 클라이언트 2부: 커스터마이징]
+- [그밖에 다양한 기술 연동]
