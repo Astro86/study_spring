@@ -2,7 +2,7 @@
 
 <image src = "images/domain_model_table_design.png" width = "500">
 
-<image src = "images/domain_table.png" width = "500">
+<image src = "images/member_entity.png" width = "500">
 
 <image src = "images/member_table.png" width = "500">
 
