@@ -18,6 +18,9 @@ public class BookForm {
 }
 ```
 
+상품은 수정을 할 수 도 있기에 id field가 필요하다.
+
+
 > 상품 등록 컨트롤러
 
 ```java
