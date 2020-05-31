@@ -1,5 +1,11 @@
 # 엔티티 설계하기
 
+<image src = "images/domain_model_table_design.png" width = "500">
+
+<image src = "images/domain_table.png" width = "500">
+
+<image src = "images/member_table.png" width = "500">
+
 > 회원 엔티티
 
 ```java
