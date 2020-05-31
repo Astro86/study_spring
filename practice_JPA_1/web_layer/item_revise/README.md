@@ -68,6 +68,18 @@ public class ItemController {
 }
 ```
 
+Form에서 넘어 올 때 악의적인 누군가가 Id를 조작해서 넘길 수 있기 때문에 조심해야 한다. 그러면 다른 사람의 데이터가 변경 될 수 있다. 때문에 권한을 확인하는 로직이 필요하다.
+
+```java
+@Transactional
+public void saveItem(Item item){
+    itemRepository.save(item);
+}
+```
+
+`itemService.saveItem(book);`를 실행하면 @Transaction이 걸린 상태로 넘어가게 된다.
+
+
 > 상품 수정 관련 폼
 
 ```html
