@@ -1,10 +1,11 @@
 # 엔티티 설계하기
 
-<image src = "images/domain_model_table_design.png" width = "500">
 
-<image src = "images/member_entity.png" width = "500">
+![](images/domain_model_table_design.png)
 
-<image src = "images/member_table.png" width = "500">
+![](images/member_entity.png)
+
+![](images/member_table.png)
 
 > 회원 엔티티
 
