@@ -1,9 +1,51 @@
 # 엔티티 설계하기
 
+## 도메인 모델과 테이블 설계
 
 ![](images/domain_model_table_design.png)
 
+- 회원과 상품의 관계 : 회원은 여러개의 상품을 주문할 수 있으므로 일대다 관계이다.
+- 주문과 상품의 관계 : 한번에 여러개의 상품을 주문할 수 있고 하나의 상품이 여러 주문에 포함될 수 있으므로 다대다 관계이다.
+- 하지만, 다대다 관계는 관계형 데이터베이스는 물론이고 엔티티에서도 거의 사용하지 않는다. 따라서 그림처럼 주문 상품이라는 엔티티를 추가해 다대다 관계를 일대다, 다대일 관계로 풀어냈다.
+
+## 회원 엔티티 분석
+
 ![](images/member_entity.png)
+
+- Member
+  - name
+  - address(Embeded Type)
+  - orders : 여러개를 주문할 수 있으므로 List형태의 값을 가진다.
+
+- Order 
+  - orderItem : 한번 주문시 여러 상품을 주문할 수 있으므로 일대다 관계를 갖는다.
+  - member : 상품을 주문한 회원에 관한 정보
+  - delivery : 배송정보
+  - orderDate : 주문 날짜
+  - status : 주문 상태
+
+- OrderItem
+  - orderPrice : 주문한 상품 정보와 주문 금액
+  - count : 주문 수량
+
+- Item
+  - name : 이름
+  - price : 가격
+  - stockQuantity : 재고수량
+  - 또한 상품의 종류로는 도서, 음반, 영화있다.
+
+- Delivery
+  - 주문시 하나의 배송 정보를 생성한다.
+  - order : 주문과 배송은 일대일 관계를 갖는다.
+
+- Category
+  - items : 상품과는 다대다 관계를 맺는다.
+
+- Address
+  - 값타임(임베디드 타입)
+  - 회원과 배송에서 사용이 된다.
+
+## 회원 테이블 분석
 
 ![](images/member_table.png)
 
@@ -28,6 +70,11 @@ public class Member {
     private List<Order> orders = new ArrayList<>();
 }
 ```
+
+- Member
+  - name
+  - address(Embeded Type)
+  - orders : 여러개를 주문할 수 있으므로 List형태의 값을 가진다.
 
 > 주문 엔티티
 
@@ -118,6 +165,13 @@ public class Order {
 }
 ```
 
+- Order 
+  - orderItem : 한번 주문시 여러 상품을 주문할 수 있으므로 일대다 관계를 갖는다.
+  - member : 상품을 주문한 회원에 관한 정보
+  - delivery : 배송정보
+  - orderDate : 주문 날짜
+  - status : 주문 상태
+
 > 주문 상태
 
 ```java
@@ -184,6 +238,11 @@ public class OrderItem {
 }
 ```
 
+- OrderItem
+  - orderPrice : 주문한 상품 정보와 주문 금액
+  - count : 주문 수량
+
+
 > 상품 엔티티(추상 클래스)
 
 ```java
@@ -225,6 +284,13 @@ public abstract class Item {
     }
 }
 ```
+
+- Item
+  - name : 이름
+  - price : 가격
+  - stockQuantity : 재고수량
+  - 또한 상품의 종류로는 도서, 음반, 영화있다.
+
 
 > 상품-도서 엔티티
 
@@ -289,6 +355,11 @@ public class Delivery {
 }
 ```
 
+- Delivery
+  - 주문시 하나의 배송 정보를 생성한다.
+  - order : 주문과 배송은 일대일 관계를 갖는다.
+
+
 > 배송 상태 엔티티
 
 ```java
@@ -333,6 +404,10 @@ public class Category {
 }
 ```
 
+- Category
+  - items : 상품과는 다대다 관계를 맺는다.
+
+
 > 주소 값
 
 ```java
@@ -354,3 +429,7 @@ public class Address {
     }
 }
 ```
+
+- Address
+  - 값타임(임베디드 타입)
+  - 회원과 배송에서 사용이 된다.
