@@ -94,7 +94,7 @@ public class MemberService {
 | ----------------------- | ------------------------------------------------------------------------------------------------------------ |
 | memberRepository        | member 테이블에 접근하기 위한 객체                                                                           |
 | join                    | 중복여부를 검사한 후 member테이블에 Member를 추가해주는 역할                                                 |
-| validateDuplicatemember | member 테이블이 해당 member를 가지고 있는지 확인을 해주는 역할을 한다. 만약 있는 겨웅에는 에러를 출력해준다. |
+| validateDuplicatemember | member 테이블이 해당 member를 가지고 있는지 확인을 해주는 역할을 한다. 만약 있는 경우에는 에러를 출력해준다. |
 | findMembers             | 전체 회원을 조회해주는 역할을 한다.                                                                          |
 | findOne                 | 해당 id를 가지고 있는 회원을 찾아준다.                                                                       |
 
