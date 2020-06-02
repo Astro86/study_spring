@@ -71,10 +71,10 @@ public class Member {
 }
 ```
 
-- Member
-  - name
-  - address(Embeded Type)
-  - orders : 여러개를 주문할 수 있으므로 List형태의 값을 가진다.
+`Member`
+- `String name` : 회원 이름을 저장
+- `Address address(Embeded Type)` : 주소를 저장하기 위한 Address 객체
+- `List<Order> orders` : 여러개를 주문할 수 있으므로 List형태의 값을 가진다.
 
 > 주문 엔티티
 
