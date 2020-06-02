@@ -73,11 +73,11 @@ public class Member {
 ```
 
 #### Member
-| 클래스      | field명               | 설명                                                |
-| ----------- | --------------------- | --------------------------------------------------- |
-| String      | name                  | 회원 이름을 저장                                    |
-| Address     | address(Embeded Type) | 주소를 저장하기 위한 Address 객체                   |
-| List<Order> | orders                | 여러개를 주문할 수 있으므로 List형태의 값을 가진다. |
+| 클래스        | field명               | 설명                                                |
+| ------------- | --------------------- | --------------------------------------------------- |
+| String        | name                  | 회원 이름을 저장                                    |
+| Address       | address(Embeded Type) | 주소를 저장하기 위한 Address 객체                   |
+| List\<Order\> | orders                | 여러개를 주문할 수 있으므로 List형태의 값을 가진다. |
 
 > 주문 엔티티
 
@@ -169,13 +169,13 @@ public class Order {
 ```
 
 #### `Order`클래스
-| 클래스          | field명    | 설명                                       |
-| --------------- | ---------- | ------------------------------------------ |
-| Member          | member     | 주문한 회원을 담을 수 있는 Member객체      |
-| List<OrderItem> | orderItems | 주문한 item들을 담기 위한 List             |
-| Delivery        | delivery   | 배송 정보를 담기 위한 delivery객체,        |
-| LocalDateTime   | orderDate  | 주문한 시간을 담기 위한 LocalDateTime 객체 |
-| OrderStatus     | status     | 주문한 상태를 담기 위한 OrderStatus 객체   |
+| 클래스            | field명    | 설명                                       |
+| ----------------- | ---------- | ------------------------------------------ |
+| Member            | member     | 주문한 회원을 담을 수 있는 Member객체      |
+| List\<OrderItem\> | orderItems | 주문한 item들을 담기 위한 List             |
+| Delivery          | delivery   | 배송 정보를 담기 위한 delivery객체,        |
+| LocalDateTime     | orderDate  | 주문한 시간을 담기 위한 LocalDateTime 객체 |
+| OrderStatus       | status     | 주문한 상태를 담기 위한 OrderStatus 객체   |
 
 > 주문 상태
 
@@ -296,12 +296,12 @@ public abstract class Item {
 ```
 
 #### Item
-| 클래스         | field명       | 설명                                             |
-| -------------- | ------------- | ------------------------------------------------ |
-| String         | name          | 상품 이름                                        |
-| int            | price         | 상품 가격                                        |
-| int            | stockQuantity | 재고수량                                         |
-| List<Category> | categories    | 상품이 가지고 있는 카테고리를 저장하기 위한 List |
+| 클래스           | field명       | 설명                                             |
+| ---------------- | ------------- | ------------------------------------------------ |
+| String           | name          | 상품 이름                                        |
+| int              | price         | 상품 가격                                        |
+| int              | stockQuantity | 재고수량                                         |
+| List\<Category\> | categories    | 상품이 가지고 있는 카테고리를 저장하기 위한 List |
 
 
 > 상품-도서 엔티티
