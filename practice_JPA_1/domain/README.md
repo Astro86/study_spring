@@ -165,12 +165,12 @@ public class Order {
 }
 ```
 
-- Order 
-  - orderItem : 한번 주문시 여러 상품을 주문할 수 있으므로 일대다 관계를 갖는다.
-  - member : 상품을 주문한 회원에 관한 정보
-  - delivery : 배송정보
-  - orderDate : 주문 날짜
-  - status : 주문 상태
+`Order`클래스
+- `Member member` : 주문한 회원을 담을 수 있는 Member객체 
+- `List<OrderItem> orderItems` : 주문한 item들을 담기 위한 List
+- `Delivery delivery` : 배송 정보를 담기 위한 delivery객체, 
+- `LocalDateTime orderDate` 주문한 시간을 담기 위한 LocalDateTime 객체
+- `OrderStatus status` 주문한 상태를 담기 위한 OrderStatus 객체
 
 > 주문 상태
 
@@ -238,9 +238,12 @@ public class OrderItem {
 }
 ```
 
-- OrderItem
-  - orderPrice : 주문한 상품 정보와 주문 금액
-  - count : 주문 수량
+`OrderItem` 클래스
+- `Item item` : 상품을 담기 위한 Item 객체
+- `Order order` : 주문에 대한 정보를 담기 위한 Order 객체 
+- `int orderPrice` : 주문 가격을 담기 위한 orderPrice
+- `int count` : 주문 갯수를 담기 위한 field
+
 
 
 > 상품 엔티티(추상 클래스)
@@ -285,11 +288,11 @@ public abstract class Item {
 }
 ```
 
-- Item
-  - name : 이름
-  - price : 가격
-  - stockQuantity : 재고수량
-  - 또한 상품의 종류로는 도서, 음반, 영화있다.
+`Item`
+- `String name` : 상품 이름
+- `int price` : 상품 가격
+- `int stockQuantity` : 재고수량
+- `List<Category> categories` : 상품이 가지고 있는 카테고리를 저장하기 위한 List
 
 
 > 상품-도서 엔티티
@@ -355,10 +358,10 @@ public class Delivery {
 }
 ```
 
-- Delivery
-  - 주문시 하나의 배송 정보를 생성한다.
-  - order : 주문과 배송은 일대일 관계를 갖는다.
-
+`Delivery`
+- `Order order` : 주문과 배송은 일대일 관계를 갖는다.
+- `Address address` : 배송을 위한 주소를 저장하기 위한 Address객체 
+- `DeliveryStatus status` : 배송 상태를 저장하기 위한 enums 객체
 
 > 배송 상태 엔티티
 
@@ -367,6 +370,10 @@ public enum  DeliveryStatus {
     READY, COMP
 }
 ```
+`DeliveryStatus`는 두가지 상태를 갖는다.
+- READY
+- COMP
+
 
 > 카테고리 엔티티
 
@@ -404,8 +411,12 @@ public class Category {
 }
 ```
 
-- Category
-  - items : 상품과는 다대다 관계를 맺는다.
+Category
+- `String name` : 카테고리 이름을 저장
+- `List<Item> items` : 한 카테고리가 가지고 있는 item들을 저장하기 위한 List
+- `Category parent` : 상위 카테고리를 저장
+- `List<Category> child` : 하위 카테고리를 저장하기 위한 List
+ 
 
 
 > 주소 값
@@ -430,6 +441,7 @@ public class Address {
 }
 ```
 
-- Address
-  - 값타임(임베디드 타입)
-  - 회원과 배송에서 사용이 된다.
+`Address`
+- `String city` : 도시를 저장
+- `String street` : 거리를 저장
+- `String zipcode` : 우편 번호를 저장
