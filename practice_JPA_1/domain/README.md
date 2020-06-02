@@ -4,9 +4,10 @@
 
 ![](images/domain_model_table_design.png)
 
-- 회원과 상품의 관계 : 회원은 여러개의 상품을 주문할 수 있으므로 일대다 관계이다.
-- 주문과 상품의 관계 : 한번에 여러개의 상품을 주문할 수 있고 하나의 상품이 여러 주문에 포함될 수 있으므로 다대다 관계이다.
-- 하지만, 다대다 관계는 관계형 데이터베이스는 물론이고 엔티티에서도 거의 사용하지 않는다. 따라서 그림처럼 주문 상품이라는 엔티티를 추가해 다대다 관계를 일대다, 다대일 관계로 풀어냈다.
+- 회원과 상품의 관계 : 회원은 여러개의 상품을 주문할 수 있으므로 `일대다 관계`이다.
+- 주문과 상품의 관계 : 한번에 여러개의 상품을 주문할 수 있고 하나의 상품이 여러 주문에 포함될 수 있으므로 `다대다 관계`이다.
+
+>하지만, 다대다 관계는 관계형 데이터베이스는 물론이고 엔티티에서도 거의 사용하지 않는다. 따라서 그림처럼 주문 상품이라는 엔티티를 추가해 다대다 관계를 일대다, 다대일 관계로 풀어냈다.
 
 ## 회원 엔티티 분석
 
@@ -71,10 +72,12 @@ public class Member {
 }
 ```
 
-`Member`
-- `String name` : 회원 이름을 저장
-- `Address address(Embeded Type)` : 주소를 저장하기 위한 Address 객체
-- `List<Order> orders` : 여러개를 주문할 수 있으므로 List형태의 값을 가진다.
+#### Member
+| 클래스      | field명               | 설명                                                |
+| ----------- | --------------------- | --------------------------------------------------- |
+| String      | name                  | 회원 이름을 저장                                    |
+| Address     | address(Embeded Type) | 주소를 저장하기 위한 Address 객체                   |
+| List<Order> | orders                | 여러개를 주문할 수 있으므로 List형태의 값을 가진다. |
 
 > 주문 엔티티
 
@@ -165,12 +168,14 @@ public class Order {
 }
 ```
 
-`Order`클래스
-- `Member member` : 주문한 회원을 담을 수 있는 Member객체 
-- `List<OrderItem> orderItems` : 주문한 item들을 담기 위한 List
-- `Delivery delivery` : 배송 정보를 담기 위한 delivery객체, 
-- `LocalDateTime orderDate` 주문한 시간을 담기 위한 LocalDateTime 객체
-- `OrderStatus status` 주문한 상태를 담기 위한 OrderStatus 객체
+#### `Order`클래스
+| 클래스          | field명    | 설명                                       |
+| --------------- | ---------- | ------------------------------------------ |
+| Member          | member     | 주문한 회원을 담을 수 있는 Member객체      |
+| List<OrderItem> | orderItems | 주문한 item들을 담기 위한 List             |
+| Delivery        | delivery   | 배송 정보를 담기 위한 delivery객체,        |
+| LocalDateTime   | orderDate  | 주문한 시간을 담기 위한 LocalDateTime 객체 |
+| OrderStatus     | status     | 주문한 상태를 담기 위한 OrderStatus 객체   |
 
 > 주문 상태
 
@@ -238,11 +243,13 @@ public class OrderItem {
 }
 ```
 
-`OrderItem` 클래스
-- `Item item` : 상품을 담기 위한 Item 객체
-- `Order order` : 주문에 대한 정보를 담기 위한 Order 객체 
-- `int orderPrice` : 주문 가격을 담기 위한 orderPrice
-- `int count` : 주문 갯수를 담기 위한 field
+#### OrderItem 클래스
+| 클래스 | field명    | 설명                                    |
+| ------ | ---------- | --------------------------------------- |
+| Item   | item       | 상품을 담기 위한 Item 객체              |
+| Order  | order      | 주문에 대한 정보를 담기 위한 Order 객체 |
+| int    | orderPrice | 주문 가격을 담기 위한 orderPrice        |
+| int    | count      | 주문 갯수를 담기 위한 field             |
 
 
 
@@ -288,11 +295,13 @@ public abstract class Item {
 }
 ```
 
-`Item`
-- `String name` : 상품 이름
-- `int price` : 상품 가격
-- `int stockQuantity` : 재고수량
-- `List<Category> categories` : 상품이 가지고 있는 카테고리를 저장하기 위한 List
+#### Item
+| 클래스         | field명       | 설명                                             |
+| -------------- | ------------- | ------------------------------------------------ |
+| String         | name          | 상품 이름                                        |
+| int            | price         | 상품 가격                                        |
+| int            | stockQuantity | 재고수량                                         |
+| List<Category> | categories    | 상품이 가지고 있는 카테고리를 저장하기 위한 List |
 
 
 > 상품-도서 엔티티
@@ -358,10 +367,12 @@ public class Delivery {
 }
 ```
 
-`Delivery`
-- `Order order` : 주문과 배송은 일대일 관계를 갖는다.
-- `Address address` : 배송을 위한 주소를 저장하기 위한 Address객체 
-- `DeliveryStatus status` : 배송 상태를 저장하기 위한 enums 객체
+#### Delivery
+| 클래스         | field명 | 설명                                         |
+| -------------- | ------- | -------------------------------------------- |
+| Order          | order   | 주문과 배송은 일대일 관계를 갖는다.          |
+| Address        | address | 배송을 위한 주소를 저장하기 위한 Address객체 |
+| DeliveryStatus | status  | 배송 상태를 저장하기 위한 enums 객체         |
 
 > 배송 상태 엔티티
 
@@ -411,11 +422,13 @@ public class Category {
 }
 ```
 
-Category
-- `String name` : 카테고리 이름을 저장
-- `List<Item> items` : 한 카테고리가 가지고 있는 item들을 저장하기 위한 List
-- `Category parent` : 상위 카테고리를 저장
-- `List<Category> child` : 하위 카테고리를 저장하기 위한 List
+#### Category
+| 클래스         | field명 | 설명                                                  |
+| -------------- | ------- | ----------------------------------------------------- |
+| String         | name    | 카테고리 이름을 저장                                  |
+| List<Item>     | items   | 한 카테고리가 가지고 있는 item들을 저장하기 위한 List |
+| Category       | parent  | 상위 카테고리를 저장                                  |
+| List<Category> | child   | 하위 카테고리를 저장하기 위한 List                    |
  
 
 
@@ -442,6 +455,8 @@ public class Address {
 ```
 
 `Address`
-- `String city` : 도시를 저장
-- `String street` : 거리를 저장
-- `String zipcode` : 우편 번호를 저장
+| 클래스 | field명 | 설명             |
+| ------ | ------- | ---------------- |
+| String | city    | 도시를 저장      |
+| String | street  | 거리를 저장      |
+| String | zipcode | 우편 번호를 저장 |
