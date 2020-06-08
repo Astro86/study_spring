@@ -1,158 +1,86 @@
 # 05장 모델과 데이터베이스
 
+> jpa, thymeleaf, web, lombok, hsqldb, devtools
+
 ## 05-1장 JPA에 의한 데이터베이스 사용하기
 
-```java
-코드5-1
-<dependency>
-	<groupId>org.springframework.boot</groupId>
-	<artifactId>spring-boot-starter-data-jpa</artifactId>
-</dependency>
-<dependency>
-	<groupId>org.hsqldb</groupId>
-	<artifactId>hsqldb</artifactId>
-	<scope>runtime</scope>
-</dependency>
-```
+> 도메인
+
 
 ```java
-코드5-2
-package com.tuyano.springboot;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 @Entity
-@Table(name="mydata")
+@Getter
+@Setter
 public class MyData {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column
-	private long id;
-	
-	@Column(length = 50, nullable = false)
-	private String name;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	@Column(length = 200, nullable = true)
-	private String mail;
+    @Column
+    private String name;
 
-	@Column(nullable = true)
-	private Integer age;
-	
-	@Column(nullable = true)
-	private String memo;
+    @Column(nullable = true)
+    private String mail;
 
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
+    @Column(nullable = true)
+    private Integer age;
 
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getMail() {
-		return mail;
-	}
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public Integer getAge() {
-		return age;
-	}
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-
-	public String getMemo() {
-		return memo;
-	}
-	public void setMemo(String memo) {
-		this.memo = memo;
-	}
+    @Column(nullable = true)
+    private String memo;
 }
 ```
 
-```java
-코드5-3
-package com.tuyano.springboot.repositories;
-
-public interface MyDataRepository {
-
-}
-```
+> repository
 
 ```java
-코드5-4
-package com.tuyano.springboot.repositories;
-
-import com.tuyano.springboot.MyData;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 @Repository
 public interface MyDataRepository  extends JpaRepository<MyData, Long> {
 	
 }
 ```
 
+> controller
+
 ```java
 코드5-5
-package com.tuyano.springboot;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.tuyano.springboot.repositories.MyDataRepository;
-
 @Controller
 public class HeloController {
-	
-	@Autowired
-	MyDataRepository repository;
 
-	@RequestMapping("/")
-	public ModelAndView index(ModelAndView mav) {
-		mav.setViewName("index");
-		mav.addObject("msg","this is sample content.");
-		Iterable<MyData> list = repository.findAll();
-		mav.addObject("data",list);
-		return mav;
-	}
+    @Autowired
+    MyDataRepository myDataRepository;
+
+    @GetMapping("/")
+    public String index(Model model){
+        List<MyData> list = myDataRepository.findAll();
+        model.addAttribute("data", list);
+        return "index";
+    }
 }
 ```
+`/`로 들어오면 db에 저장된 MyData테이블의 모든 list들을 보여준다.
+
+> index.html
 
 ```java
 코드5-6
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>top page</title>
-	<meta http-equiv="Content-Type" 
-		content="text/html; charset=UTF-8" />
-	<style>
-	h1 { font-size:18pt; font-weight:bold; color:gray; }
-	body { font-size:13pt; color:gray; margin:5px 25px; }
-	pre { border: solid 3px #ddd; padding: 10px; }
-	</style>
+    <meta charset="UTF-8">
+    <title>top page</title>
+    <meta http-equiv="Content-Type"
+          content="text/html";
+          charset="UTF-8"/>
+    <style>
+        h1 {font-size: 18pt; font-weight: bold; color:gray}
+        body{font-size: 13pt; color:gray; margin:5px 25px}
+        pre{border:solid 3px #ddd; padding:10px;}
+    </style>
 </head>
 <body>
-	<h1 th:text="#{content.title}">Helo page</h1>
-	<pre th:text="${data}"></pre>
+    <h1>Helo page</h1>
+    <pre th:text="${data}"></pre>
 </body>
 </html>
 ```
@@ -160,7 +88,6 @@ public class HeloController {
 ## 엔터티의 CRUD
 
 ```java
-코드5-7
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -272,7 +199,7 @@ public void init(){
 	repository.saveAndFlush(d3);
 }
 ```
-
+## 수정하기
 
 ```java
 코드5-10
@@ -311,36 +238,48 @@ public void init(){
 </html>
 ```
 
+### 수정 요청
+
 ```java
-코드5-11
-@Repository
-public interface MyDataRepository  extends JpaRepository<MyData, Long> {
-	
-	public MyData findById(Long name);
+@Controller
+public class HeloController {
+
+    @Autowired
+    MyDataRepository myDataRepository;
+
+    @GetMapping("/")
+    public String index(@ModelAttribute("formModel") MyData myData, Model model){
+        model.addAttribute("msg", "this is sample content");
+
+        List<MyData> list = myDataRepository.findAll();
+        model.addAttribute("datalist", list);
+
+        return "index";
+    }
+
+    @PostMapping("/")
+    @Transactional(readOnly = false)
+    public String form(@ModelAttribute("formModel") MyData myData, Model model){
+        myDataRepository.save(myData);
+        return "redirect:";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@ModelAttribute MyData myData, @PathVariable long id, Model model){
+        model.addAttribute("title", "edit mydata.");
+        model.addAttribute("formModel", myDataRepository.findById(id).orElse(new MyData()));
+        return "edit";
+    }
+
+    @PostMapping("/edit")
+    @Transactional(readOnly = false)
+    public String update(@ModelAttribute MyData myData, Model model){
+        myDataRepository.saveAndFlush(myData);
+        return "redirect:";
+    }
 }
 ```
 
-
-```java
-코드5-12
-@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-public ModelAndView edit(@ModelAttribute MyData mydata, 
-		@PathVariable int id,ModelAndView mav) {
-	mav.setViewName("edit");
-	mav.addObject("title","edit mydata.");
-	MyData data = repository.findById((long)id);
-	mav.addObject("formModel",data);
-	return mav;
-}
-
-@RequestMapping(value = "/edit", method = RequestMethod.POST)
-@Transactional(readOnly=false)
-public ModelAndView update(@ModelAttribute MyData mydata, 
-		ModelAndView mav) {
-	repository.saveAndFlush(mydata);
-	return new ModelAndView("redirect:/");
-}
-```
 
 
 ```java
