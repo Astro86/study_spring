@@ -52,4 +52,4 @@
 
 ## JpaRepository
 
-![](images/jpa_repository_inheritence.png)
+<image src="images/jpa_repository_inheritence.png" width="200">
