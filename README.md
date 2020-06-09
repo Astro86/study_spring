@@ -3,6 +3,7 @@
 - [spring 4](spring4/README.md)
 - [처음 시작하는 스프링 부트2](springboot2/README.md)
 - [스프링부트 프로그래밍 입문](springboot_tutorial/README.md)
+- []
 
 ## 김영환 교수님의 스프링 & JPA 강좌
 - [자바 ORM 표준 JPA 프로그래밍 - 기본편](JPA/README.md)
@@ -11,6 +12,7 @@
 ## 백기선 교수님의 스프링 강좌
 - [스프링부트 개념과 활용](springboot_concept_application/README.md)
 
+## 자바 Bean? 스프링 Bean? 이란???
 
 ## Entity vs DTO vs VO
 
@@ -44,3 +46,10 @@
 | 레이어와 레이어 사이에서 사용한다.     | 모든 레이어에서 사용이 가능하다.     |
 | DTO dto1(1) != DTO dto(1)              | VO vo1(1) == vO vo2(1)               |
 | 데이터 접근 외의 기능을 가지지 않는다. | 특정한 비즈니스 로직을 가질 수 있다. |
+
+## domain에서 사용하는 어노테이션
+
+
+## JpaRepository
+
+![](images/jpa_repository_inheritence.png)
