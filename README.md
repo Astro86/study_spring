@@ -12,6 +12,8 @@
 ## 백기선 교수님의 스프링 강좌
 - [스프링부트 개념과 활용](springboot_concept_application/README.md)
 
+- [스프링 시큐리티](spring_framework_security/README.md)
+
 ## 자바 Bean? 스프링 Bean? 이란???
 
 ## Entity vs DTO vs VO
