@@ -3,7 +3,7 @@
 - [spring 4](spring4/README.md)
 - [처음 시작하는 스프링 부트2](springboot2/README.md)
 - [스프링부트 프로그래밍 입문](springboot_tutorial/README.md)
-- []
+- [누구나 쉽게 따라할 수 있는 스프링 부트](spring_ruby/README.md)
 
 ## 김영환 교수님의 스프링 & JPA 강좌
 - [자바 ORM 표준 JPA 프로그래밍 - 기본편](JPA/README.md)
@@ -51,5 +51,7 @@
 
 
 ## JpaRepository
+
+### JpaRepository 상속구조
 
 <image src="images/jpa_repository_inheritence.png" width="200">
