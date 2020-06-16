@@ -36,6 +36,22 @@ class OwnerController {
 ### 스프링 Bean
 > IoC 컨테이너가 관리하는 객체를 Bean이라 한다.
 
+스프링 IOC 컨테이너가 관리하는 객체만이 Bean이다. 
+
+#### 스프링 컨테이너에 Bean으로 등록하는 방법
+
+1. Component Scan
+   - Repository
+   - Service
+   - Controller
+2. XML에 직접 등록하는 방법
+    - @Bean을 이용하여 직접적으로 등록을 하면 된다.
+    - Bean 어노테이션으로 정의할 때는 Configuration 어노테이션을 가지고 있는 클래스 안에 정의해야 한다.
+
+#### Bean을 꺼내서 쓰는 방법
+
+1. Autowired 어노테이션을 이용해서 Bean을 꺼내 쓸 수 있다.
+
 ## Entity vs DTO vs VO
 
 > Entity
