@@ -14,7 +14,27 @@
 
 - [스프링 시큐리티](spring_framework_security/README.md)
 
+## IoC 컨테이너
+- 스프링은 ApplicationContext or BeanFactory라는 IOC 컨테이너 인터페이스를 제공한다.
+- IOC 컨테이너를 직접 쓸 일이 거의 없다.
+```java
+class OwnerController {
+	private OwnerRepository repo;
+	public OwnerController(OwnerRepository repo) { 
+		this.repo = repo;
+	}
+// repo를 사용합니다. 
+}
+```
+- IOC컨테이너는 위의 코드를 동작하게 만들어준다.
+- OwnerController가 IOC컨테이너 내부에 객체로 들어오게 되고 IOC컨테이너 내부에서 OwnerController의 객체를 만들어준다. OwnerRepository 타입의 객체도 만들어준다.
+- IOC컨테이너는 이런 Bean들의 의존성을 관리해준다.
+  - Bean : 컨테이너 내부에 만든 객체들
+
 ## 자바 Bean? 스프링 Bean? 이란???
+
+### 스프링 Bean
+> IoC 컨테이너가 관리하는 객체를 Bean이라 한다.
 
 ## Entity vs DTO vs VO
 
